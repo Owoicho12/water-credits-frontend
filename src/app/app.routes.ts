@@ -142,6 +142,13 @@ export const routes: Routes = [
                 (m) => m.MarketplaceOrderBookComponent,
               ),
           },
+          {
+            path: ':id/buy',
+            loadComponent: () =>
+              import('./features/marketplace/marketplace-buy/marketplace-buy').then(
+                (m) => m.MarketplaceBuyComponent,
+              ),
+          },
         ],
       },
       {

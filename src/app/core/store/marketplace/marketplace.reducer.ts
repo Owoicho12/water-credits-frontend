@@ -2,6 +2,10 @@ import { createReducer, on } from '@ngrx/store';
 import * as MarketplaceActions from './marketplace.actions';
 import { MarketplaceListing, OrderBook } from '../../services/marketplace.service';
 
+/** The buy wizard's current phase, used to drive UI state. */
+export type BuyPhase =
+  'idle' | 'preparing' | 'awaiting_signature' | 'submitting' | 'confirmed' | 'failed';
+
 export interface MarketplaceState {
   listings: MarketplaceListing[];
   total: number;
@@ -15,6 +19,12 @@ export interface MarketplaceState {
   loading: boolean;
   /** True while create-listing mutation is in flight. */
   creating: boolean;
+  /** True while a cancel-listing mutation is in flight. */
+  cancelling: boolean;
+  /** Buy wizard phase — drives spinner / step display. */
+  buyPhase: BuyPhase;
+  /** The listing currently being purchased through the buy wizard. */
+  activeListing: MarketplaceListing | null;
   error: string | null;
 }
 
@@ -28,6 +38,9 @@ const initialState: MarketplaceState = {
   orderBook: null,
   loading: false,
   creating: false,
+  cancelling: false,
+  buyPhase: 'idle',
+  activeListing: null,
   error: null,
 };
 
@@ -88,6 +101,61 @@ export const marketplaceReducer = createReducer(
   on(MarketplaceActions.createListingFailure, (state, { error }) => ({
     ...state,
     creating: false,
+    error,
+  })),
+
+  // ── Buy Listing ──────────────────────────────────────────────────────────────
+  on(MarketplaceActions.initiateBuy, (state) => ({
+    ...state,
+    buyPhase: 'preparing' as BuyPhase,
+    activeListing: null,
+    error: null,
+  })),
+  on(MarketplaceActions.buyPrepareFailure, (state, { error }) => ({
+    ...state,
+    buyPhase: 'failed' as BuyPhase,
+    error,
+  })),
+  on(MarketplaceActions.buySignatureRejected, (state) => ({
+    // User cancelled — return to idle so the buy page can go back to review.
+    ...state,
+    buyPhase: 'idle' as BuyPhase,
+    error: null,
+  })),
+  on(MarketplaceActions.buySignatureFailure, (state, { error }) => ({
+    ...state,
+    buyPhase: 'failed' as BuyPhase,
+    error,
+  })),
+  on(MarketplaceActions.buySubmitFailure, (state, { error }) => ({
+    ...state,
+    buyPhase: 'failed' as BuyPhase,
+    error,
+  })),
+  on(MarketplaceActions.buyConfirmed, (state, { listing }) => ({
+    ...state,
+    buyPhase: 'confirmed' as BuyPhase,
+    activeListing: listing,
+    error: null,
+    listings: state.listings.map((l) => (l.id === listing.id ? listing : l)),
+  })),
+
+  // ── Cancel Listing ───────────────────────────────────────────────────────────
+  on(MarketplaceActions.cancelListing, (state) => ({
+    ...state,
+    cancelling: true,
+    error: null,
+  })),
+  on(MarketplaceActions.cancelListingSuccess, (state, { listingId }) => ({
+    ...state,
+    cancelling: false,
+    listings: state.listings.map((l) =>
+      l.id === listingId ? { ...l, status: 'cancelled' as const } : l,
+    ),
+  })),
+  on(MarketplaceActions.cancelListingFailure, (state, { error }) => ({
+    ...state,
+    cancelling: false,
     error,
   })),
 
