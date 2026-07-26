@@ -66,7 +66,10 @@ export const createListingFailure = createAction(
 // unsigned XDR) -> Freighter signing -> submit. See MarketplaceEffects.initiateBuy$.
 
 /** Dispatched by MarketplaceBuyComponent when the user clicks "Confirm Purchase". */
-export const initiateBuy = createAction('[Marketplace] Initiate Buy', props<{ listingId: string }>());
+export const initiateBuy = createAction(
+  '[Marketplace] Initiate Buy',
+  props<{ listingId: string }>(),
+);
 
 export const buyPrepareFailure = createAction(
   '[Marketplace] Buy Prepare Failure',

@@ -4,7 +4,13 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { LucideAngularModule, ArrowLeft, ShoppingCart, CheckCircle2, XCircle } from 'lucide-angular';
+import {
+  LucideAngularModule,
+  ArrowLeft,
+  ShoppingCart,
+  CheckCircle2,
+  XCircle,
+} from 'lucide-angular';
 
 import { MarketplaceListing, MarketplaceService } from '../../../core/services/marketplace.service';
 import { AppState } from '../../../core/store/app.state';
@@ -234,8 +240,10 @@ export class MarketplaceBuyComponent implements OnInit, OnDestroy {
   }
 
   private updateIsOwner(): void {
-    this.isOwner = !!this.listing && !!this.currentUserWallet
-      && this.currentUserWallet === this.listing.sellerId;
+    this.isOwner =
+      !!this.listing &&
+      !!this.currentUserWallet &&
+      this.currentUserWallet === this.listing.sellerId;
   }
 
   private watchBuyPhase(): void {

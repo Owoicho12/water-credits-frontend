@@ -213,7 +213,10 @@ export class MarketplaceEffects {
           `Successfully purchased ${listing.amount} credits from ${listing.projectName}`,
         );
       }),
-      mergeMap(() => [MarketplaceActions.loadListings({ params: {} }), CreditsActions.loadPortfolio()]),
+      mergeMap(() => [
+        MarketplaceActions.loadListings({ params: {} }),
+        CreditsActions.loadPortfolio(),
+      ]),
     ),
   );
 

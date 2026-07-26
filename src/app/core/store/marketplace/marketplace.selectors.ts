@@ -53,4 +53,7 @@ export const selectIsBuyInProgress = createSelector(
 );
 
 /** True only after the purchase has been confirmed on-chain. */
-export const selectIsBuyConfirmed = createSelector(selectBuyPhase, (phase) => phase === 'confirmed');
+export const selectIsBuyConfirmed = createSelector(
+  selectBuyPhase,
+  (phase) => phase === 'confirmed',
+);
