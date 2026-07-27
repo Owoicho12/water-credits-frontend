@@ -6,12 +6,14 @@ import { switchMap, exhaustMap, map, catchError, tap } from 'rxjs/operators';
 
 import * as MarketplaceActions from './marketplace.actions';
 import { MarketplaceService } from '../../services/marketplace.service';
+import { WebsocketService } from '../../services/websocket.service';
 import { NotificationService } from '../../services/notification.service';
 
 @Injectable()
 export class MarketplaceEffects {
   private readonly actions$ = inject(Actions);
   private readonly marketplaceService = inject(MarketplaceService);
+  private readonly websocketService = inject(WebsocketService);
   private readonly notificationService = inject(NotificationService);
   private readonly router = inject(Router);
 
@@ -99,5 +101,67 @@ export class MarketplaceEffects {
         }),
       ),
     { dispatch: false },
+  );
+
+  // ── Price History ────────────────────────────────────────────────────────────
+
+  /**
+   * switchMap: a new loadPriceHistory action (e.g., range change) cancels the
+   * previous in-flight request.
+   */
+  loadPriceHistory$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MarketplaceActions.loadPriceHistory),
+      switchMap(({ projectId, range }) =>
+        from(this.marketplaceService.getPriceHistory(projectId, range)).pipe(
+          map((response) =>
+            MarketplaceActions.loadPriceHistorySuccess({
+              projectId: response.projectId,
+              range: response.range,
+              candles: response.candles,
+            }),
+          ),
+          catchError((err) =>
+            of(
+              MarketplaceActions.loadPriceHistoryFailure({
+                error: err instanceof Error ? err.message : 'Failed to load price history',
+              }),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  /**
+   * When the user changes the time range, the component dispatches
+   * loadPriceHistory directly with the projectId, so no separate effect
+   * is needed here.
+   */
+  // reloadOnRangeChange$ is handled by the component dispatching loadPriceHistory directly.
+
+  // ── WebSocket: live order book ────────────────────────────────────────────
+
+  /**
+   * Forwards marketplace:orderbook WebSocket events into the store.
+   * The component is responsible for subscribing/unsubscribing the WS channel;
+   * this effect simply translates events to actions.
+   */
+  orderBookRealtime$ = createEffect(() =>
+    this.websocketService.marketplaceOrderBook$.pipe(
+      map(({ orderBook }) => MarketplaceActions.updateOrderBookRealtime({ orderBook })),
+    ),
+  );
+
+  // ── WebSocket: live price candles ─────────────────────────────────────────
+
+  /**
+   * Forwards marketplace:price WebSocket events into the store so the chart
+   * stays in sync without a full re-fetch.
+   */
+  candleRealtime$ = createEffect(() =>
+    this.websocketService.marketplacePrice$.pipe(
+      map(({ candle }) => MarketplaceActions.updateCandleRealtime({ candle })),
+    ),
   );
 }

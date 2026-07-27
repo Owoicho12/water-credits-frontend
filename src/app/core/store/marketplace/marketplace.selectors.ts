@@ -33,3 +33,25 @@ export const selectMarketplaceFilters = createSelector(
 );
 
 export const selectOrderBook = createSelector(selectMarketplaceState, (state) => state.orderBook);
+
+// ── Price History ─────────────────────────────────────────────────────────────
+
+export const selectPriceHistory = createSelector(
+  selectMarketplaceState,
+  (state) => state.priceHistory,
+);
+
+export const selectPriceChartRange = createSelector(
+  selectMarketplaceState,
+  (state) => state.priceChartRange,
+);
+
+export const selectPriceHistoryLoading = createSelector(
+  selectMarketplaceState,
+  (state) => state.priceHistoryLoading,
+);
+
+export const selectPriceHistoryError = createSelector(
+  selectMarketplaceState,
+  (state) => state.priceHistoryError,
+);
