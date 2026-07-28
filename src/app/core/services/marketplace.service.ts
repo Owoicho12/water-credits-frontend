@@ -13,6 +13,27 @@ import {
 export type { MarketplaceListing, CreateListingRequest, OrderBook } from '../models/marketplace.model';
 export type { OrderBookEntry } from '../models/marketplace.model';
 
+/**
+ * Response from POST /marketplace/listings/:id/buy.
+ *
+ * Mirrors RetirementPrepareResponse: if the backend supports the two-step
+ * flow it returns an unsigned XDR for the client to sign. When absent the
+ * backend has already settled the purchase (legacy single-POST path).
+ */
+export interface BuyPrepareResponse {
+  listing: MarketplaceListing;
+  /** Base64-encoded unsigned XDR of the Soroban contract invocation. */
+  unsignedXdr?: string;
+  /** Stellar network passphrase needed by Freighter for correct signing. */
+  networkPassphrase?: string;
+}
+
+/** Payload sent to POST /marketplace/listings/:id/submit after Freighter signs the XDR. */
+export interface BuySubmitRequest {
+  listingId: string;
+  signedXdr: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class MarketplaceService {
   constructor(private api: ApiService) {}
@@ -43,15 +64,13 @@ export class MarketplaceService {
     return this.api.get<OrderBook>(`/marketplace/orderbook/${projectId}`);
   }
 
-  /**
-   * Fetch OHLC price history candles for a project's credits.
-   *
-   * @param projectId  The project whose credit price history to fetch.
-   * @param range      Time window: 1H | 6H | 24H | 7D | 30D.
-   */
-  async getPriceHistory(projectId: string, range: PriceChartTimeRange): Promise<PriceHistoryResponse> {
-    return this.api.get<PriceHistoryResponse>(`/marketplace/prices/${projectId}`, {
-      params: { range },
+  async buyListing(id: string): Promise<BuyPrepareResponse> {
+    return this.api.post<BuyPrepareResponse>(`/marketplace/listings/${id}/buy`);
+  }
+
+  async submitPurchase(payload: BuySubmitRequest): Promise<MarketplaceListing> {
+    return this.api.post<MarketplaceListing>(`/marketplace/listings/${payload.listingId}/submit`, {
+      signedXdr: payload.signedXdr,
     });
   }
 }

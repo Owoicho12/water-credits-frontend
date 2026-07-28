@@ -34,24 +34,26 @@ export const selectMarketplaceFilters = createSelector(
 
 export const selectOrderBook = createSelector(selectMarketplaceState, (state) => state.orderBook);
 
-// ── Price History ─────────────────────────────────────────────────────────────
-
-export const selectPriceHistory = createSelector(
+export const selectMarketplaceCancelling = createSelector(
   selectMarketplaceState,
-  (state) => state.priceHistory,
+  (state) => state.cancelling,
 );
 
-export const selectPriceChartRange = createSelector(
+export const selectBuyPhase = createSelector(selectMarketplaceState, (state) => state.buyPhase);
+
+export const selectActiveListing = createSelector(
   selectMarketplaceState,
-  (state) => state.priceChartRange,
+  (state) => state.activeListing,
 );
 
-export const selectPriceHistoryLoading = createSelector(
-  selectMarketplaceState,
-  (state) => state.priceHistoryLoading,
+/** Convenience: true while the buy wizard is anywhere between prepare and confirmed. */
+export const selectIsBuyInProgress = createSelector(
+  selectBuyPhase,
+  (phase) => phase === 'preparing' || phase === 'awaiting_signature' || phase === 'submitting',
 );
 
-export const selectPriceHistoryError = createSelector(
-  selectMarketplaceState,
-  (state) => state.priceHistoryError,
+/** True only after the purchase has been confirmed on-chain. */
+export const selectIsBuyConfirmed = createSelector(
+  selectBuyPhase,
+  (phase) => phase === 'confirmed',
 );
