@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { LucideAngularModule, Plus, BarChart3 } from 'lucide-angular';
 import { MarketplaceListing } from '../../../core/services/marketplace.service';
 import { AppState } from '../../../core/store/app.state';
@@ -14,6 +15,7 @@ import {
   selectMarketplaceError,
   selectMarketplacePagination,
 } from '../../../core/store/marketplace/marketplace.selectors';
+import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
 import {
   DataTableComponent,
   ColumnDef,
@@ -154,11 +156,18 @@ import { NumberAbbreviatePipe } from '../../../shared/pipes/number-abbreviate.pi
             </ng-template>
             <ng-template ngSwitchCase="actions">
               <button
-                *ngIf="row.status === 'active'"
+                *ngIf="row.status === 'active' && row.sellerId !== currentUserWallet"
                 (click)="buyListing(row)"
                 class="btn btn-sm btn-primary"
               >
                 Buy
+              </button>
+              <button
+                *ngIf="row.status === 'active' && row.sellerId === currentUserWallet"
+                (click)="cancelListing(row)"
+                class="btn btn-sm btn-outline text-red-600 border-red-200 hover:bg-red-50 dark:border-red-800"
+              >
+                Cancel Listing
               </button>
             </ng-template>
             <ng-template ngSwitchDefault>
@@ -186,6 +195,7 @@ export class MarketplaceListingsComponent implements OnInit, OnDestroy {
 
   protected statusFilter = '';
   protected searchQuery = '';
+  protected currentUserWallet: string | null = null;
 
   private page = 1;
   private destroy$ = new Subject<void>();
@@ -213,6 +223,10 @@ export class MarketplaceListingsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.dispatchLoad();
+    this.store
+      .select(selectCurrentUser)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((user) => (this.currentUserWallet = user?.wallet ?? null));
   }
 
   ngOnDestroy(): void {
@@ -251,5 +265,9 @@ export class MarketplaceListingsComponent implements OnInit, OnDestroy {
 
   protected buyListing(listing: MarketplaceListing): void {
     this.router.navigate(['/marketplace', listing.id, 'buy']);
+  }
+
+  protected cancelListing(listing: MarketplaceListing): void {
+    this.store.dispatch(MarketplaceActions.cancelListing({ listingId: listing.id }));
   }
 }

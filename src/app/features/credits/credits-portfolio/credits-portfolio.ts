@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgIf, NgFor, AsyncPipe, NgSwitch, NgSwitchCase } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -44,6 +44,7 @@ import {
   ArrowUpRight,
   ArrowDownRight,
   ArrowLeftRight,
+  Tag,
 } from 'lucide-angular';
 
 @Component({
@@ -189,14 +190,24 @@ import {
                     class="text-sm text-slate-700 dark:text-slate-300 font-semibold"
                     >$ {{ parseFloat(row.balance) * row.creditPrice | numberAbbreviate }}</span
                   >
-                  <button
-                    *ngSwitchCase="'actions'"
-                    (click)="openRetireModal(row)"
-                    class="btn btn-sm btn-outline flex items-center gap-1.5 text-xs"
-                  >
-                    <lucide-angular [img]="DropletsIcon" class="w-3.5 h-3.5" aria-hidden="true"></lucide-angular>
-                    Retire
-                  </button>
+                  <div *ngSwitchCase="'actions'" class="flex items-center gap-2">
+                    <button
+                      (click)="openRetireModal(row)"
+                      class="btn btn-sm btn-outline flex items-center gap-1.5 text-xs"
+                      [attr.aria-label]="'Retire ' + row.projectName + ' credits'"
+                    >
+                      <lucide-angular [img]="DropletsIcon" class="w-3.5 h-3.5" aria-hidden="true"></lucide-angular>
+                      Retire
+                    </button>
+                    <button
+                      (click)="sellHolding(row)"
+                      class="btn btn-sm btn-outline flex items-center gap-1.5 text-xs"
+                      [attr.aria-label]="'Sell ' + row.projectName + ' credits'"
+                    >
+                      <lucide-angular [img]="TagIcon" class="w-3.5 h-3.5" aria-hidden="true"></lucide-angular>
+                      Sell
+                    </button>
+                  </div>
                 </ng-container>
               </ng-template>
             </app-data-table>
@@ -322,12 +333,16 @@ export class CreditsPortfolioComponent implements OnInit, OnDestroy {
   protected readonly ArrowUpRightIcon = ArrowUpRight;
   protected readonly ArrowDownRightIcon = ArrowDownRight;
   protected readonly ArrowLeftRightIcon = ArrowLeftRight;
+  protected readonly TagIcon = Tag;
 
   protected readonly parseFloat = parseFloat;
 
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private router: Router,
+  ) {
     this.portfolio$ = this.store.select(selectPortfolio);
     this.loading$ = this.store.select(selectCreditsLoading);
     this.transactions$ = this.store.select(selectCreditTransactions);
@@ -362,6 +377,10 @@ export class CreditsPortfolioComponent implements OnInit, OnDestroy {
       },
     ];
     this.showRetireModal = true;
+  }
+
+  protected sellHolding(balance: CreditBalance): void {
+    this.router.navigate(['/marketplace/new'], { queryParams: { projectId: balance.projectId } });
   }
 
   protected closeRetireModal(): void {
