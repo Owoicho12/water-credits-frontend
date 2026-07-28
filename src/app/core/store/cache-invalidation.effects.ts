@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { from } from 'rxjs';
 import { filter, mergeMap } from 'rxjs/operators';
@@ -52,7 +52,7 @@ export class CacheInvalidationEffects {
    *
    * mergeMap (not switchMap) is intentional: a single success action can
    * fan out into multiple independent refreshes (e.g. registerParcelSuccess
-   * â†’ farmers + analytics), and switchMap would cancel an in-flight refresh
+   * ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ farmers + analytics), and switchMap would cancel an in-flight refresh
    * from an earlier trigger if a new one arrives before it completes.
    */
   invalidateDependentSlices$ = createEffect(() =>

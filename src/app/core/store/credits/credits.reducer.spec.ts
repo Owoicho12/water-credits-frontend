@@ -1,4 +1,4 @@
-import { creditsReducer, CreditsState } from './credits.reducer';
+import { creditsReducer } from './credits.reducer';
 import * as CreditsActions from './credits.actions';
 import * as AuthActions from '../auth/auth.actions';
 
