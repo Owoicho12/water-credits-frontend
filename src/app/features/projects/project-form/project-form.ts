@@ -98,9 +98,10 @@ const ALLOWED_MIME = [
                   class="w-4 h-4" aria-hidden="true"
                 ></lucide-angular>
                 <lucide-angular
-                  *ngIf="i aria-hidden="true" >= currentStep"
+                  *ngIf="i >= currentStep"
                   [img]="stepIcons[i]"
                   class="w-4 h-4"
+                  aria-hidden="true"
                 ></lucide-angular>
               </div>
               <span class="text-[10px] text-slate-500 hidden sm:block">{{ label }}</span>

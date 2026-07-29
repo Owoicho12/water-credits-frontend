@@ -79,7 +79,7 @@ const PURPOSE_OPTIONS = [
                 aria-hidden="true"
               ></lucide-angular>
               <lucide-angular
-                *ngIf="i aria-hidden="true" >= currentStep"
+                *ngIf="i >= currentStep"
                 [img]="step.icon"
                 class="w-5 h-5"
                 aria-hidden="true"
