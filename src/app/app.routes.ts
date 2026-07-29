@@ -144,6 +144,13 @@ export const routes: Routes = [
               ),
           },
           {
+            path: 'chart',
+            loadComponent: () =>
+              import('./features/marketplace/marketplace-chart/marketplace-chart').then(
+                (m) => m.MarketplaceChartComponent,
+              ),
+          },
+          {
             path: ':id/buy',
             loadComponent: () =>
               import('./features/marketplace/marketplace-buy/marketplace-buy').then(

@@ -19,6 +19,7 @@ import { FarmersEffects } from './core/store/farmers/farmers.effects';
 import { AnalyticsEffects } from './core/store/analytics/analytics.effects';
 import { GlobalErrorHandler } from './core/handlers/global-error.handler';
 import { setRouteError } from './core/store/ui/ui.actions';
+import { CacheInvalidationEffects } from './core/store/cache-invalidation.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -44,6 +45,7 @@ export const appConfig: ApplicationConfig = {
       MarketplaceEffects,
       FarmersEffects,
       AnalyticsEffects,
+      CacheInvalidationEffects,
     ]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideServiceWorker('ngsw-worker.js', {
