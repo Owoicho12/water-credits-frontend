@@ -58,15 +58,15 @@ import {
             routerLink="/credits"
             class="inline-flex items-center gap-1 text-sm text-stellar-blue hover:text-stellar-blue-light mb-4"
           >
-            <lucide-angular [img]="ArrowLeftIcon" class="w-4 h-4"></lucide-angular>
+            <lucide-icon [img]="ArrowLeftIcon" class="w-4 h-4"></lucide-icon>
             Back to Portfolio
           </a>
           <div class="flex items-center gap-3 mb-2">
             <div class="w-10 h-10 rounded-lg bg-stellar-blue/10 flex items-center justify-center">
-              <lucide-angular
+              <lucide-icon
                 [img]="DropletsIcon"
                 class="w-5 h-5 text-stellar-blue"
-              ></lucide-angular>
+              ></lucide-icon>
             </div>
             <div>
               <h1 class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -86,10 +86,10 @@ import {
                 Minted
               </p>
               <div class="w-8 h-8 rounded-lg bg-stellar-blue/10 flex items-center justify-center">
-                <lucide-angular
+                <lucide-icon
                   [img]="TrendingUpIcon"
                   class="w-4 h-4 text-stellar-blue"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-xl font-bold text-slate-900 dark:text-white">
@@ -106,10 +106,10 @@ import {
               <div
                 class="w-8 h-8 rounded-lg bg-environmental-green/10 flex items-center justify-center"
               >
-                <lucide-angular
+                <lucide-icon
                   [img]="ShieldCheckIcon"
                   class="w-4 h-4 text-environmental-green"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-xl font-bold text-slate-900 dark:text-white">
@@ -124,10 +124,10 @@ import {
                 Balance
               </p>
               <div class="w-8 h-8 rounded-lg bg-credit-gold/10 flex items-center justify-center">
-                <lucide-angular
+                <lucide-icon
                   [img]="DropletsIcon"
                   class="w-4 h-4 text-credit-gold"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-xl font-bold text-slate-900 dark:text-white">
@@ -142,10 +142,10 @@ import {
                 Price
               </p>
               <div class="w-8 h-8 rounded-lg bg-credit-gold/10 flex items-center justify-center">
-                <lucide-angular
+                <lucide-icon
                   [img]="DollarSignIcon"
                   class="w-4 h-4 text-credit-gold"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-xl font-bold text-slate-900 dark:text-white">
@@ -216,7 +216,7 @@ import {
                         "
                         class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
                       >
-                        <lucide-angular
+                        <lucide-icon
                           [img]="
                             tx.type === 'mint'
                               ? ArrowUpRightIcon
@@ -225,7 +225,7 @@ import {
                                 : ArrowLeftRightIcon
                           "
                           class="w-3.5 h-3.5"
-                        ></lucide-angular>
+                        ></lucide-icon>
                       </div>
                       <span class="text-sm font-medium text-slate-900 dark:text-white capitalize">{{
                         tx.type
@@ -243,10 +243,10 @@ import {
                   <td class="px-4 py-3.5 text-sm text-slate-700 dark:text-slate-300 font-mono">
                     <span *ngIf="tx.from" class="flex items-center gap-1">
                       {{ tx.from | stellarAddress }}
-                      <lucide-angular
+                      <lucide-icon
                         [img]="ArrowRightIcon"
                         class="w-3 h-3 text-slate-400"
-                      ></lucide-angular>
+                      ></lucide-icon>
                     </span>
                     <span *ngIf="tx.to">{{ tx.to | stellarAddress }}</span>
                     <span *ngIf="!tx.from && !tx.to" class="text-slate-400">—</span>

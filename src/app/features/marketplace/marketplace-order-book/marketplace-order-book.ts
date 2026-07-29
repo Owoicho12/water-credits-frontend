@@ -31,7 +31,7 @@ import { CreditAmountPipe } from '../../../shared/pipes/credit-amount.pipe';
     <div class="space-y-6">
       <div class="flex items-center gap-4">
         <a routerLink="/marketplace" class="btn btn-ghost btn-sm">
-          <lucide-angular [img]="ArrowLeftIcon" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="ArrowLeftIcon" class="w-4 h-4"></lucide-icon>
           Back to Marketplace
         </a>
         <div>
@@ -61,10 +61,10 @@ import { CreditAmountPipe } from '../../../shared/pipes/credit-amount.pipe';
               class="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-red-50 dark:bg-red-900/10"
             >
               <div class="flex items-center gap-2">
-                <lucide-angular
+                <lucide-icon
                   [img]="TrendingDownIcon"
                   class="w-4 h-4 text-red-500"
-                ></lucide-angular>
+                ></lucide-icon>
                 <h2 class="font-semibold text-red-700 dark:text-red-400">Asks (Sell Orders)</h2>
               </div>
             </div>
@@ -141,10 +141,10 @@ import { CreditAmountPipe } from '../../../shared/pipes/credit-amount.pipe';
               class="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-green-50 dark:bg-green-900/10"
             >
               <div class="flex items-center gap-2">
-                <lucide-angular
+                <lucide-icon
                   [img]="TrendingUpIcon"
                   class="w-4 h-4 text-green-500"
-                ></lucide-angular>
+                ></lucide-icon>
                 <h2 class="font-semibold text-green-700 dark:text-green-400">Bids (Buy Orders)</h2>
               </div>
             </div>

@@ -27,14 +27,14 @@ import { WalletService } from '../../../core/services/wallet.service';
           class="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700"
           aria-label="Toggle sidebar"
         >
-          <lucide-angular
+          <lucide-icon
             [img]="MenuIcon"
             class="w-5 h-5 text-slate-600 dark:text-slate-400"
-          ></lucide-angular>
+          ></lucide-icon>
         </button>
         <a routerLink="/dashboard" class="flex items-center gap-2">
           <div class="w-8 h-8 rounded-lg bg-stellar-blue flex items-center justify-center">
-            <lucide-angular [img]="DropletsIcon" class="w-4 h-4 text-white"></lucide-angular>
+            <lucide-icon [img]="DropletsIcon" class="w-4 h-4 text-white"></lucide-icon>
           </div>
           <span class="font-bold text-lg text-slate-900 dark:text-white hidden sm:inline"
             >Water Credits</span
@@ -48,16 +48,16 @@ import { WalletService } from '../../../core/services/wallet.service';
           class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700"
           [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
         >
-          <lucide-angular
+          <lucide-icon
             [img]="isDarkMode ? SunIcon : MoonIcon"
             class="w-4 h-4 text-slate-500"
-          ></lucide-angular>
+          ></lucide-icon>
         </button>
         <button
           class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 relative"
           aria-label="Notifications"
         >
-          <lucide-angular [img]="BellIcon" class="w-4 h-4 text-slate-500"></lucide-angular>
+          <lucide-icon [img]="BellIcon" class="w-4 h-4 text-slate-500"></lucide-icon>
           <span
             class="absolute top-1.5 right-1.5 w-2 h-2 bg-retirement-red rounded-full"
             aria-hidden="true"

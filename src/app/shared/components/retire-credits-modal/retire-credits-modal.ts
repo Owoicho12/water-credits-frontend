@@ -27,7 +27,7 @@ interface Step {
               (click)="prevStep()"
               class="text-slate-400 hover:text-slate-600"
             >
-              <lucide-angular [img]="ChevronLeft" class="w-5 h-5"></lucide-angular>
+              <lucide-icon [img]="ChevronLeft" class="w-5 h-5"></lucide-icon>
             </button>
             <h2 class="text-lg font-semibold text-slate-900 dark:text-white">
               {{ steps[currentStep].label }}
@@ -37,7 +37,7 @@ interface Step {
             (click)="close.emit()"
             class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
           >
-            <lucide-angular [img]="X" class="w-5 h-5"></lucide-angular>
+            <lucide-icon [img]="X" class="w-5 h-5"></lucide-icon>
           </button>
         </div>
         <div class="px-6 py-4">
@@ -50,11 +50,11 @@ interface Step {
                 }"
                 class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-colors"
               >
-                <lucide-angular
+                <lucide-icon
                   *ngIf="i < currentStep"
                   [img]="Check"
                   class="w-4 h-4"
-                ></lucide-angular>
+                ></lucide-icon>
                 <span *ngIf="i >= currentStep">{{ i + 1 }}</span>
               </div>
               <div
@@ -133,10 +133,10 @@ interface Step {
           </div>
 
           <div *ngIf="currentStep === 4" class="text-center py-4">
-            <lucide-angular
+            <lucide-icon
               [img]="Check"
               class="w-12 h-12 text-environmental-green mx-auto mb-3"
-            ></lucide-angular>
+            ></lucide-icon>
             <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-1">
               Retirement Submitted!
             </h3>

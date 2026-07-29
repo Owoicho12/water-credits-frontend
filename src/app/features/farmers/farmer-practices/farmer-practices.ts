@@ -56,13 +56,13 @@ interface Bmp {
                 "
                 class="w-10 h-10 rounded-xl flex items-center justify-center"
               >
-                <lucide-angular
+                <lucide-icon
                   [img]="bmp.icon"
                   class="w-5 h-5"
                   [ngClass]="
                     bmp.enrolled ? 'text-environmental-green' : 'text-slate-500 dark:text-slate-400'
                   "
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
               <div>
                 <h3 class="font-semibold text-slate-900 dark:text-white">{{ bmp.name }}</h3>
@@ -78,10 +78,10 @@ interface Bmp {
                   : 'text-slate-300 dark:text-slate-600 hover:text-slate-400'
               "
             >
-              <lucide-angular
+              <lucide-icon
                 [img]="bmp.enrolled ? CheckCircle : Circle"
                 class="w-6 h-6"
-              ></lucide-angular>
+              ></lucide-icon>
             </button>
           </div>
           <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">{{ bmp.description }}</p>
@@ -103,10 +103,10 @@ interface Bmp {
             class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-700"
           >
             <div class="flex items-center gap-1 text-sm">
-              <lucide-angular
+              <lucide-icon
                 [img]="Leaf"
                 class="w-3.5 h-3.5 text-environmental-green"
-              ></lucide-angular>
+              ></lucide-icon>
               <span class="font-semibold text-environmental-green">{{ bmp.estimatedCredits }}</span>
               <span class="text-xs text-slate-400">credits/yr</span>
             </div>
@@ -121,10 +121,10 @@ interface Bmp {
 
       <div class="card p-5 bg-stellar-blue/5 border border-stellar-blue/10">
         <div class="flex items-start gap-3">
-          <lucide-angular
+          <lucide-icon
             [img]="Info"
             class="w-5 h-5 text-stellar-blue mt-0.5 shrink-0"
-          ></lucide-angular>
+          ></lucide-icon>
           <div>
             <h3 class="text-sm font-semibold text-slate-900 dark:text-white mb-1">About BMPs</h3>
             <p class="text-sm text-slate-500 dark:text-slate-400">

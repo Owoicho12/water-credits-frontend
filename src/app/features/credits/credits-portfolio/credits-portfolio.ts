@@ -76,7 +76,7 @@ import {
           </p>
         </div>
         <button (click)="refresh()" class="btn btn-outline text-sm flex items-center gap-2">
-          <lucide-angular [img]="RefreshCwIcon" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="RefreshCwIcon" class="w-4 h-4"></lucide-icon>
           Refresh
         </button>
       </div>
@@ -96,10 +96,10 @@ import {
                   Total Balance
                 </p>
                 <div class="w-9 h-9 rounded-lg bg-stellar-blue/10 flex items-center justify-center">
-                  <lucide-angular
+                  <lucide-icon
                     [img]="WalletIcon"
                     class="w-4.5 h-4.5 text-stellar-blue"
-                  ></lucide-angular>
+                  ></lucide-icon>
                 </div>
               </div>
               <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -117,10 +117,10 @@ import {
                   Total Value
                 </p>
                 <div class="w-9 h-9 rounded-lg bg-credit-gold/10 flex items-center justify-center">
-                  <lucide-angular
+                  <lucide-icon
                     [img]="DollarSignIcon"
                     class="w-4.5 h-4.5 text-credit-gold"
-                  ></lucide-angular>
+                  ></lucide-icon>
                 </div>
               </div>
               <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -137,10 +137,10 @@ import {
                 <div
                   class="w-9 h-9 rounded-lg bg-environmental-green/10 flex items-center justify-center"
                 >
-                  <lucide-angular
+                  <lucide-icon
                     [img]="PieChartIcon"
                     class="w-4.5 h-4.5 text-environmental-green"
-                  ></lucide-angular>
+                  ></lucide-icon>
                 </div>
               </div>
               <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -194,7 +194,7 @@ import {
                     (click)="openRetireModal(row)"
                     class="btn btn-sm btn-outline flex items-center gap-1.5 text-xs"
                   >
-                    <lucide-angular [img]="DropletsIcon" class="w-3.5 h-3.5"></lucide-angular>
+                    <lucide-icon [img]="DropletsIcon" class="w-3.5 h-3.5"></lucide-icon>
                     Retire
                   </button>
                 </ng-container>
@@ -207,10 +207,10 @@ import {
               <h2
                 class="text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2"
               >
-                <lucide-angular
+                <lucide-icon
                   [img]="ClockIcon"
                   class="w-4.5 h-4.5 text-stellar-blue"
-                ></lucide-angular>
+                ></lucide-icon>
                 Recent Transactions
               </h2>
             </div>
@@ -239,7 +239,7 @@ import {
                     "
                     class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                   >
-                    <lucide-angular
+                    <lucide-icon
                       [img]="
                         tx.type === 'mint'
                           ? ArrowUpRightIcon
@@ -248,7 +248,7 @@ import {
                             : ArrowLeftRightIcon
                       "
                       class="w-4 h-4"
-                    ></lucide-angular>
+                    ></lucide-icon>
                   </div>
                   <div>
                     <p class="text-sm font-medium text-slate-900 dark:text-white capitalize">

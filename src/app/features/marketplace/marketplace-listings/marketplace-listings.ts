@@ -59,11 +59,11 @@ import { NumberAbbreviatePipe } from '../../../shared/pipes/number-abbreviate.pi
         </div>
         <div class="flex items-center gap-3">
           <a routerLink="/marketplace/orderbook" class="btn btn-ghost">
-            <lucide-angular [img]="BarChart3Icon" class="w-4 h-4"></lucide-angular>
+            <lucide-icon [img]="BarChart3Icon" class="w-4 h-4"></lucide-icon>
             Order Book
           </a>
           <a routerLink="/marketplace/new" class="btn btn-primary">
-            <lucide-angular [img]="PlusIcon" class="w-4 h-4"></lucide-angular>
+            <lucide-icon [img]="PlusIcon" class="w-4 h-4"></lucide-icon>
             Create Listing
           </a>
         </div>

@@ -16,17 +16,17 @@ import { LucideAngularModule, X, AlertTriangle } from 'lucide-angular';
       >
         <div class="flex items-start justify-between mb-4">
           <div class="flex items-center gap-3">
-            <lucide-angular
+            <lucide-icon
               [img]="AlertTriangleIcon"
               class="w-6 h-6 text-yellow-500"
-            ></lucide-angular>
+            ></lucide-icon>
             <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{{ title }}</h3>
           </div>
           <button
             (click)="cancel.emit()"
             class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
           >
-            <lucide-angular [img]="XIcon" class="w-5 h-5"></lucide-angular>
+            <lucide-icon [img]="XIcon" class="w-5 h-5"></lucide-icon>
           </button>
         </div>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">{{ message }}</p>

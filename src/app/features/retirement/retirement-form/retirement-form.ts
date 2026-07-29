@@ -51,7 +51,7 @@ const PURPOSE_OPTIONS = [
         routerLink="/retirement"
         class="inline-flex items-center gap-1 text-sm text-stellar-blue hover:text-stellar-blue-light mb-6"
       >
-        <lucide-angular [img]="ChevronLeft" class="w-4 h-4"></lucide-angular>
+        <lucide-icon [img]="ChevronLeft" class="w-4 h-4"></lucide-icon>
         Back to Retirement History
       </a>
 
@@ -72,10 +72,10 @@ const PURPOSE_OPTIONS = [
               }"
               class="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
             >
-              <lucide-angular
+              <lucide-icon
                 [img]="i < currentStep ? Check : step.icon"
                 class="w-5 h-5"
-              ></lucide-angular>
+              ></lucide-icon>
             </div>
             <div
               *ngIf="i < steps.length - 1"
@@ -99,10 +99,10 @@ const PURPOSE_OPTIONS = [
           <!-- Step 0: Project selection -->
           <div *ngSwitchCase="0" class="space-y-4">
             <div class="relative">
-              <lucide-angular
+              <lucide-icon
                 [img]="Search"
                 class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"
-              ></lucide-angular>
+              ></lucide-icon>
               <input
                 type="text"
                 [(ngModel)]="searchQuery"
@@ -224,10 +224,10 @@ const PURPOSE_OPTIONS = [
 
             <div class="bg-slate-50 dark:bg-dark-bg rounded-lg p-5 space-y-4">
               <h3 class="font-medium text-slate-900 dark:text-white flex items-center gap-2">
-                <lucide-angular
+                <lucide-icon
                   [img]="ClipboardList"
                   class="w-5 h-5 text-stellar-blue"
-                ></lucide-angular>
+                ></lucide-icon>
                 Review Retirement
               </h3>
               <div class="grid grid-cols-2 gap-4 text-sm">

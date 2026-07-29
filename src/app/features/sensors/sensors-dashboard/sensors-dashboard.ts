@@ -141,15 +141,15 @@ const CHART_THRESHOLDS: Record<string, { low?: number; high?: number }> = {
             "
             class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
           >
-            <lucide-angular
+            <lucide-icon
               [img]="RefreshCwIcon"
               class="w-3.5 h-3.5"
               [class.animate-spin]="autoRefresh"
-            ></lucide-angular>
+            ></lucide-icon>
             {{ autoRefresh ? 'Auto' : 'Manual' }}
           </button>
           <a routerLink="/sensors/config" class="btn btn-outline flex items-center gap-2 text-xs">
-            <lucide-angular [img]="SettingsIcon" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="SettingsIcon" class="w-3.5 h-3.5"></lucide-icon>
             Configure
           </a>
         </div>
@@ -168,11 +168,11 @@ const CHART_THRESHOLDS: Record<string, { low?: number; high?: number }> = {
                   class="w-8 h-8 rounded-lg flex items-center justify-center"
                   [style.background]="param.color + '20'"
                 >
-                  <lucide-angular
+                  <lucide-icon
                     [img]="param.icon"
                     class="w-4 h-4"
                     [style.color]="param.color"
-                  ></lucide-angular>
+                  ></lucide-icon>
                 </div>
                 <span
                   class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider"
@@ -240,11 +240,11 @@ const CHART_THRESHOLDS: Record<string, { low?: number; high?: number }> = {
                     class="w-6 h-6 rounded flex items-center justify-center"
                     [style.background]="param.color + '20'"
                   >
-                    <lucide-angular
+                    <lucide-icon
                       [img]="param.icon"
                       class="w-3 h-3"
                       [style.color]="param.color"
-                    ></lucide-angular>
+                    ></lucide-icon>
                   </div>
                   <span class="text-sm text-slate-600 dark:text-slate-400">{{ param.label }}</span>
                 </div>

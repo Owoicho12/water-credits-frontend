@@ -45,7 +45,7 @@ import { NavItem } from '../../../core/models/shared-interfaces.model';
           "
           class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors border-l-2"
         >
-          <lucide-angular [img]="item.icon" class="w-5 h-5 shrink-0"></lucide-angular>
+          <lucide-icon [img]="item.icon" class="w-5 h-5 shrink-0"></lucide-icon>
           <span *ngIf="isOpen" class="whitespace-nowrap">{{ item.label }}</span>
         </a>
       </div>
@@ -54,11 +54,11 @@ import { NavItem } from '../../../core/models/shared-interfaces.model';
           (click)="toggle()"
           class="flex items-center gap-2 px-3 py-2 w-full rounded-lg text-sm text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
         >
-          <lucide-angular
+          <lucide-icon
             [img]="ChevronLeftIcon"
             [class.rotate-180]="!isOpen"
             class="w-4 h-4 transition-transform"
-          ></lucide-angular>
+          ></lucide-icon>
           <span *ngIf="isOpen">Collapse</span>
         </button>
       </div>

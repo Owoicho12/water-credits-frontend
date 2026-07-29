@@ -119,7 +119,7 @@ const DEFAULT_THRESHOLDS: AlertThreshold[] = [
           routerLink="/sensors"
           class="inline-flex items-center gap-1 text-sm text-stellar-blue hover:text-stellar-blue-light mb-4"
         >
-          <lucide-angular [img]="ChevronLeft" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="ChevronLeft" class="w-4 h-4"></lucide-icon>
           Back to Dashboard
         </a>
         <div class="flex items-center justify-between">
@@ -133,7 +133,7 @@ const DEFAULT_THRESHOLDS: AlertThreshold[] = [
             (click)="showRegisterForm = !showRegisterForm"
             class="btn btn-primary flex items-center gap-2"
           >
-            <lucide-angular [img]="Plus" class="w-4 h-4"></lucide-angular>
+            <lucide-icon [img]="Plus" class="w-4 h-4"></lucide-icon>
             {{ showRegisterForm ? 'Cancel' : 'Register Device' }}
           </button>
         </div>
@@ -209,7 +209,7 @@ const DEFAULT_THRESHOLDS: AlertThreshold[] = [
             (click)="showRegisterForm = false"
             class="btn btn-outline flex items-center gap-2"
           >
-            <lucide-angular [img]="X" class="w-4 h-4"></lucide-angular>
+            <lucide-icon [img]="X" class="w-4 h-4"></lucide-icon>
             Cancel
           </button>
           <button
@@ -217,7 +217,7 @@ const DEFAULT_THRESHOLDS: AlertThreshold[] = [
             [disabled]="saving || !isFormValid"
             class="btn btn-primary flex items-center gap-2"
           >
-            <lucide-angular *ngIf="!saving" [img]="Save" class="w-4 h-4"></lucide-angular>
+            <lucide-icon *ngIf="!saving" [img]="Save" class="w-4 h-4"></lucide-icon>
             <svg
               *ngIf="saving"
               class="animate-spin w-4 h-4"
@@ -266,7 +266,7 @@ const DEFAULT_THRESHOLDS: AlertThreshold[] = [
             (click)="saveThresholds()"
             class="btn btn-primary btn-sm flex items-center gap-1.5 text-xs"
           >
-            <lucide-angular [img]="Save" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="Save" class="w-3.5 h-3.5"></lucide-icon>
             Save Thresholds
           </button>
         </div>
@@ -284,10 +284,10 @@ const DEFAULT_THRESHOLDS: AlertThreshold[] = [
                 <div
                   class="w-7 h-7 rounded flex items-center justify-center bg-slate-100 dark:bg-slate-700"
                 >
-                  <lucide-angular
+                  <lucide-icon
                     [img]="getThresholdIcon(threshold.key)"
                     class="w-3.5 h-3.5 text-slate-500"
-                  ></lucide-angular>
+                  ></lucide-icon>
                 </div>
                 <span class="text-sm font-medium text-slate-700 dark:text-slate-300">{{
                   threshold.label

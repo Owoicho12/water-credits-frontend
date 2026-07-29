@@ -72,7 +72,7 @@ type ProjectTab = 'overview' | 'sensors';
           routerLink="/projects"
           class="inline-flex items-center gap-1 text-sm text-stellar-blue hover:text-stellar-blue-light mb-4"
         >
-          <lucide-angular [img]="ArrowLeft" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="ArrowLeft" class="w-4 h-4"></lucide-icon>
           Back to Projects
         </a>
         <div class="flex items-start justify-between">
@@ -111,7 +111,7 @@ type ProjectTab = 'overview' | 'sensors';
           [class.text-slate-500]="activeTab !== 'sensors'"
           class="px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors flex items-center gap-1.5"
         >
-          <lucide-angular [img]="Droplets" class="w-3.5 h-3.5"></lucide-angular>
+          <lucide-icon [img]="Droplets" class="w-3.5 h-3.5"></lucide-icon>
           Sensors
         </button>
       </div>
@@ -132,20 +132,20 @@ type ProjectTab = 'overview' | 'sensors';
                 <div>
                   <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">Area</p>
                   <p class="text-sm font-medium flex items-center gap-1">
-                    <lucide-angular
+                    <lucide-icon
                       [img]="Ruler"
                       class="w-3.5 h-3.5 text-slate-400"
-                    ></lucide-angular>
+                    ></lucide-icon>
                     {{ project.areaHectares }} hectares
                   </p>
                 </div>
                 <div>
                   <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">Location</p>
                   <p class="text-sm font-medium flex items-center gap-1">
-                    <lucide-angular
+                    <lucide-icon
                       [img]="MapPin"
                       class="w-3.5 h-3.5 text-slate-400"
-                    ></lucide-angular>
+                    ></lucide-icon>
                     {{ project.latitude.toFixed(4) }}, {{ project.longitude.toFixed(4) }}
                   </p>
                 </div>
@@ -154,10 +154,10 @@ type ProjectTab = 'overview' | 'sensors';
                     Baseline Period
                   </p>
                   <p class="text-sm font-medium flex items-center gap-1">
-                    <lucide-angular
+                    <lucide-icon
                       [img]="Calendar"
                       class="w-3.5 h-3.5 text-slate-400"
-                    ></lucide-angular>
+                    ></lucide-icon>
                     {{ project.baselineStart | dateFormat: 'short' }} -
                     {{ project.baselineEnd | dateFormat: 'short' }}
                   </p>
@@ -205,7 +205,7 @@ type ProjectTab = 'overview' | 'sensors';
               <h3
                 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2"
               >
-                <lucide-angular [img]="FileText" class="w-4 h-4 text-stellar-blue"></lucide-angular>
+                <lucide-icon [img]="FileText" class="w-4 h-4 text-stellar-blue"></lucide-icon>
                 Documents
               </h3>
               <div class="text-center py-6 text-sm text-slate-400">No documents uploaded</div>
@@ -215,7 +215,7 @@ type ProjectTab = 'overview' | 'sensors';
               <h3
                 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2"
               >
-                <lucide-angular [img]="Activity" class="w-4 h-4 text-stellar-blue"></lucide-angular>
+                <lucide-icon [img]="Activity" class="w-4 h-4 text-stellar-blue"></lucide-icon>
                 Recent Activity
               </h3>
               <div class="text-center py-6 text-sm text-slate-400">No recent activity</div>
@@ -236,10 +236,10 @@ type ProjectTab = 'overview' | 'sensors';
               *ngIf="projectSensorReadings.length === 0"
               class="card p-10 text-center text-sm text-slate-400"
             >
-              <lucide-angular
+              <lucide-icon
                 [img]="Droplets"
                 class="w-10 h-10 mx-auto mb-3 text-slate-300"
-              ></lucide-angular>
+              ></lucide-icon>
               No sensor readings available for this project yet.
             </div>
 

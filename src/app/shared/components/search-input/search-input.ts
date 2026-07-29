@@ -10,10 +10,10 @@ import { LucideAngularModule, Search, X } from 'lucide-angular';
   imports: [FormsModule, NgIf, LucideAngularModule],
   template: `
     <div class="relative">
-      <lucide-angular
+      <lucide-icon
         [img]="SearchIcon"
         class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"
-      ></lucide-angular>
+      ></lucide-icon>
       <input
         [ngModel]="value"
         (ngModelChange)="onInput($event)"
@@ -26,7 +26,7 @@ import { LucideAngularModule, Search, X } from 'lucide-angular';
         (click)="clear()"
         class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
       >
-        <lucide-angular [img]="XIcon" class="w-4 h-4"></lucide-angular>
+        <lucide-icon [img]="XIcon" class="w-4 h-4"></lucide-icon>
       </button>
     </div>
   `,

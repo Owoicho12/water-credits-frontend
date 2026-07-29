@@ -23,14 +23,14 @@ export interface FilterOption {
         class="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-700"
       >
         <div class="flex items-center gap-2">
-          <lucide-angular [img]="FilterIcon" class="w-4 h-4 text-stellar-blue"></lucide-angular>
+          <lucide-icon [img]="FilterIcon" class="w-4 h-4 text-stellar-blue"></lucide-icon>
           <h4 class="font-medium text-sm">Filters</h4>
         </div>
         <button
           (click)="reset.emit()"
           class="text-xs text-stellar-blue hover:text-stellar-blue-light flex items-center gap-1"
         >
-          <lucide-angular [img]="RotateCcwIcon" class="w-3 h-3"></lucide-angular>
+          <lucide-icon [img]="RotateCcwIcon" class="w-3 h-3"></lucide-icon>
           Reset
         </button>
       </div>

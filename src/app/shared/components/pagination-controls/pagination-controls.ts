@@ -27,14 +27,14 @@ import {
           [disabled]="page === 1"
           class="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          <lucide-angular [img]="ChevronsLeftIcon" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="ChevronsLeftIcon" class="w-4 h-4"></lucide-icon>
         </button>
         <button
           (click)="goToPage.emit(page - 1)"
           [disabled]="page === 1"
           class="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          <lucide-angular [img]="ChevronLeftIcon" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="ChevronLeftIcon" class="w-4 h-4"></lucide-icon>
         </button>
         <ng-container *ngFor="let p of pages">
           <button
@@ -55,14 +55,14 @@ import {
           [disabled]="page === totalPages"
           class="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          <lucide-angular [img]="ChevronRightIcon" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="ChevronRightIcon" class="w-4 h-4"></lucide-icon>
         </button>
         <button
           (click)="goToPage.emit(totalPages)"
           [disabled]="page === totalPages"
           class="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          <lucide-angular [img]="ChevronsRightIcon" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="ChevronsRightIcon" class="w-4 h-4"></lucide-icon>
         </button>
       </div>
     </div>

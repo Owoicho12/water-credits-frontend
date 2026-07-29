@@ -31,7 +31,7 @@ import { LoadingSpinnerComponent } from '../../../shared/components/loading-spin
     <div class="max-w-2xl mx-auto space-y-6">
       <div class="flex items-center gap-4">
         <a routerLink="/marketplace" class="btn btn-ghost btn-sm">
-          <lucide-angular [img]="ArrowLeftIcon" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="ArrowLeftIcon" class="w-4 h-4"></lucide-icon>
           Back
         </a>
         <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Create Listing</h1>
@@ -172,7 +172,7 @@ import { LoadingSpinnerComponent } from '../../../shared/components/loading-spin
             [disabled]="!isValid || (submitting$ | async)"
             class="btn btn-primary"
           >
-            <lucide-angular [img]="SendIcon" class="w-4 h-4"></lucide-angular>
+            <lucide-icon [img]="SendIcon" class="w-4 h-4"></lucide-icon>
             {{ (submitting$ | async) ? 'Creating...' : 'Create Listing' }}
           </button>
         </div>

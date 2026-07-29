@@ -64,7 +64,7 @@ import { LoggingService } from '../../../core/services/logging.service';
           </p>
         </div>
         <button (click)="refresh()" class="btn btn-outline text-sm flex items-center gap-2">
-          <lucide-angular [img]="RefreshCwIcon" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="RefreshCwIcon" class="w-4 h-4"></lucide-icon>
           Refresh
         </button>
       </div>
@@ -93,10 +93,10 @@ import { LoggingService } from '../../../core/services/logging.service';
                 Total Users
               </p>
               <div class="w-9 h-9 rounded-lg bg-stellar-blue/10 flex items-center justify-center">
-                <lucide-angular
+                <lucide-icon
                   [img]="UsersIcon"
                   class="w-4 h-4 text-stellar-blue"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -114,10 +114,10 @@ import { LoggingService } from '../../../core/services/logging.service';
               <div
                 class="w-9 h-9 rounded-lg bg-environmental-green/10 flex items-center justify-center"
               >
-                <lucide-angular
+                <lucide-icon
                   [img]="Building2Icon"
                   class="w-4 h-4 text-environmental-green"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -136,10 +136,10 @@ import { LoggingService } from '../../../core/services/logging.service';
                 Oracles
               </p>
               <div class="w-9 h-9 rounded-lg bg-credit-gold/10 flex items-center justify-center">
-                <lucide-angular
+                <lucide-icon
                   [img]="ShieldCheckIcon"
                   class="w-4 h-4 text-credit-gold"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -155,10 +155,10 @@ import { LoggingService } from '../../../core/services/logging.service';
                 Retirements
               </p>
               <div class="w-9 h-9 rounded-lg bg-retirement-red/10 flex items-center justify-center">
-                <lucide-angular
+                <lucide-icon
                   [img]="RefreshCwIcon"
                   class="w-4 h-4 text-retirement-red"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -172,7 +172,7 @@ import { LoggingService } from '../../../core/services/logging.service';
             <h3
               class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4 flex items-center gap-2"
             >
-              <lucide-angular [img]="ClockIcon" class="w-4 h-4 text-slate-400"></lucide-angular>
+              <lucide-icon [img]="ClockIcon" class="w-4 h-4 text-slate-400"></lucide-icon>
               Queue Depths
             </h3>
             <div class="space-y-3">
@@ -207,7 +207,7 @@ import { LoggingService } from '../../../core/services/logging.service';
             <h3
               class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4 flex items-center gap-2"
             >
-              <lucide-angular [img]="ActivityIcon" class="w-4 h-4 text-slate-400"></lucide-angular>
+              <lucide-icon [img]="ActivityIcon" class="w-4 h-4 text-slate-400"></lucide-icon>
               Quick Links
             </h3>
             <div class="space-y-2">
@@ -219,10 +219,10 @@ import { LoggingService } from '../../../core/services/logging.service';
                   <div
                     class="w-8 h-8 rounded-lg bg-credit-gold/10 flex items-center justify-center"
                   >
-                    <lucide-angular
+                    <lucide-icon
                       [img]="HardDriveIcon"
                       class="w-4 h-4 text-credit-gold"
-                    ></lucide-angular>
+                    ></lucide-icon>
                   </div>
                   <div>
                     <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
@@ -231,10 +231,10 @@ import { LoggingService } from '../../../core/services/logging.service';
                     <p class="text-xs text-slate-400">Manage oracle nodes and submissions</p>
                   </div>
                 </div>
-                <lucide-angular
+                <lucide-icon
                   [img]="ArrowRightIcon"
                   class="w-4 h-4 text-slate-300 group-hover:text-slate-500 transition-colors"
-                ></lucide-angular>
+                ></lucide-icon>
               </a>
               <a
                 routerLink="/admin/fees"
@@ -244,10 +244,10 @@ import { LoggingService } from '../../../core/services/logging.service';
                   <div
                     class="w-8 h-8 rounded-lg bg-stellar-blue/10 flex items-center justify-center"
                   >
-                    <lucide-angular
+                    <lucide-icon
                       [img]="SettingsIcon"
                       class="w-4 h-4 text-stellar-blue"
-                    ></lucide-angular>
+                    ></lucide-icon>
                   </div>
                   <div>
                     <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
@@ -256,10 +256,10 @@ import { LoggingService } from '../../../core/services/logging.service';
                     <p class="text-xs text-slate-400">Configure protocol fees and thresholds</p>
                   </div>
                 </div>
-                <lucide-angular
+                <lucide-icon
                   [img]="ArrowRightIcon"
                   class="w-4 h-4 text-slate-300 group-hover:text-slate-500 transition-colors"
-                ></lucide-angular>
+                ></lucide-icon>
               </a>
               <a
                 routerLink="/admin/users"
@@ -269,10 +269,10 @@ import { LoggingService } from '../../../core/services/logging.service';
                   <div
                     class="w-8 h-8 rounded-lg bg-environmental-green/10 flex items-center justify-center"
                   >
-                    <lucide-angular
+                    <lucide-icon
                       [img]="UsersIcon"
                       class="w-4 h-4 text-environmental-green"
-                    ></lucide-angular>
+                    ></lucide-icon>
                   </div>
                   <div>
                     <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
@@ -281,10 +281,10 @@ import { LoggingService } from '../../../core/services/logging.service';
                     <p class="text-xs text-slate-400">Manage users, roles, and KYC status</p>
                   </div>
                 </div>
-                <lucide-angular
+                <lucide-icon
                   [img]="ArrowRightIcon"
                   class="w-4 h-4 text-slate-300 group-hover:text-slate-500 transition-colors"
-                ></lucide-angular>
+                ></lucide-icon>
               </a>
             </div>
           </div>

@@ -61,7 +61,7 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
           </p>
         </div>
         <a routerLink="/governance/new" class="btn btn-primary inline-flex items-center gap-2">
-          <lucide-angular [img]="PlusIcon" class="w-4 h-4"></lucide-angular>
+          <lucide-icon [img]="PlusIcon" class="w-4 h-4"></lucide-icon>
           New Proposal
         </a>
       </div>
@@ -76,7 +76,7 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
       >
         <div class="card p-4">
           <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
-            <lucide-angular [img]="ScaleIcon" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="ScaleIcon" class="w-3.5 h-3.5"></lucide-icon>
             <span>Protocol Fee</span>
           </div>
           <p class="text-lg font-semibold text-slate-900 dark:text-white">
@@ -85,7 +85,7 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
         </div>
         <div class="card p-4">
           <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
-            <lucide-angular [img]="ClockIcon" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="ClockIcon" class="w-3.5 h-3.5"></lucide-icon>
             <span>Vote Duration</span>
           </div>
           <p class="text-lg font-semibold text-slate-900 dark:text-white">
@@ -94,7 +94,7 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
         </div>
         <div class="card p-4">
           <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
-            <lucide-angular [img]="ShieldIcon" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="ShieldIcon" class="w-3.5 h-3.5"></lucide-icon>
             <span>Timelock</span>
           </div>
           <p class="text-lg font-semibold text-slate-900 dark:text-white">
@@ -103,7 +103,7 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
         </div>
         <div class="card p-4">
           <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
-            <lucide-angular [img]="TrendingUpIcon" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="TrendingUpIcon" class="w-3.5 h-3.5"></lucide-icon>
             <span>Quorum</span>
           </div>
           <p class="text-lg font-semibold text-slate-900 dark:text-white">
@@ -112,7 +112,7 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
         </div>
         <div class="card p-4">
           <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
-            <lucide-angular [img]="ActivityIcon" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="ActivityIcon" class="w-3.5 h-3.5"></lucide-icon>
             <span>Oracle Threshold</span>
           </div>
           <p class="text-lg font-semibold text-slate-900 dark:text-white">
@@ -121,7 +121,7 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
         </div>
         <div class="card p-4">
           <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
-            <lucide-angular [img]="UsersIcon" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="UsersIcon" class="w-3.5 h-3.5"></lucide-icon>
             <span>Quality Penalty</span>
           </div>
           <p class="text-lg font-semibold text-slate-900 dark:text-white">
@@ -130,7 +130,7 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
         </div>
         <div class="card p-4">
           <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
-            <lucide-angular [img]="VoteIcon" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="VoteIcon" class="w-3.5 h-3.5"></lucide-icon>
             <span>N-Removal Weight</span>
           </div>
           <p class="text-lg font-semibold text-slate-900 dark:text-white">
@@ -139,7 +139,7 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
         </div>
         <div class="card p-4">
           <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
-            <lucide-angular [img]="VoteIcon" class="w-3.5 h-3.5"></lucide-angular>
+            <lucide-icon [img]="VoteIcon" class="w-3.5 h-3.5"></lucide-icon>
             <span>P-Removal Weight</span>
           </div>
           <p class="text-lg font-semibold text-slate-900 dark:text-white">
@@ -196,10 +196,10 @@ import { selectCurrentUser } from '../../../core/store/auth/auth.selectors';
                   *ngSwitchCase="'deadline'"
                   class="whitespace-nowrap inline-flex items-center gap-1"
                 >
-                  <lucide-angular
+                  <lucide-icon
                     [img]="ClockIcon"
                     class="w-3.5 h-3.5 text-slate-400"
-                  ></lucide-angular>
+                  ></lucide-icon>
                   <span>{{ row.deadline | duration }} left</span>
                 </span>
               </ng-container>

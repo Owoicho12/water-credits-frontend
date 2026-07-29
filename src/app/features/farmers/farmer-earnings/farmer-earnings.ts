@@ -70,10 +70,10 @@ interface ProjectedEarning {
             <div
               class="w-9 h-9 rounded-lg bg-environmental-green/10 flex items-center justify-center"
             >
-              <lucide-angular
+              <lucide-icon
                 [img]="Wallet"
                 class="w-4 h-4 text-environmental-green"
-              ></lucide-angular>
+              ></lucide-icon>
             </div>
           </div>
           <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -90,7 +90,7 @@ interface ProjectedEarning {
               Pending
             </p>
             <div class="w-9 h-9 rounded-lg bg-credit-gold/10 flex items-center justify-center">
-              <lucide-angular [img]="Clock" class="w-4 h-4 text-credit-gold"></lucide-angular>
+              <lucide-icon [img]="Clock" class="w-4 h-4 text-credit-gold"></lucide-icon>
             </div>
           </div>
           <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -107,7 +107,7 @@ interface ProjectedEarning {
               Projected
             </p>
             <div class="w-9 h-9 rounded-lg bg-stellar-blue/10 flex items-center justify-center">
-              <lucide-angular [img]="TrendingUp" class="w-4 h-4 text-stellar-blue"></lucide-angular>
+              <lucide-icon [img]="TrendingUp" class="w-4 h-4 text-stellar-blue"></lucide-icon>
             </div>
           </div>
           <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -208,21 +208,21 @@ interface ProjectedEarning {
                     *ngIf="payout.type === 'sale'"
                     class="inline-flex items-center gap-1 text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full"
                   >
-                    <lucide-angular [img]="CheckCircle" class="w-3 h-3"></lucide-angular>
+                    <lucide-icon [img]="CheckCircle" class="w-3 h-3"></lucide-icon>
                     Sale
                   </span>
                   <span
                     *ngIf="payout.type === 'retire'"
                     class="inline-flex items-center gap-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full"
                   >
-                    <lucide-angular [img]="ArrowUpRight" class="w-3 h-3"></lucide-angular>
+                    <lucide-icon [img]="ArrowUpRight" class="w-3 h-3"></lucide-icon>
                     Retired
                   </span>
                   <span
                     *ngIf="payout.type === 'mint'"
                     class="inline-flex items-center gap-1 text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 px-2 py-0.5 rounded-full"
                   >
-                    <lucide-angular [img]="Clock" class="w-3 h-3"></lucide-angular>
+                    <lucide-icon [img]="Clock" class="w-3 h-3"></lucide-icon>
                     Minted
                   </span>
                   <span

@@ -50,7 +50,7 @@ interface OracleEntry {
         </div>
         <div class="flex items-center gap-2">
           <button (click)="refresh()" class="btn btn-outline flex items-center gap-2">
-            <lucide-angular [img]="RefreshCw" class="w-4 h-4"></lucide-angular>
+            <lucide-icon [img]="RefreshCw" class="w-4 h-4"></lucide-icon>
             Refresh
           </button>
         </div>
@@ -69,10 +69,10 @@ interface OracleEntry {
             </div>
             <ng-container *ngIf="!loading">
               <div *ngIf="oracles.length === 0" class="text-center py-12">
-                <lucide-angular
+                <lucide-icon
                   [img]="HardDrive"
                   class="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3"
-                ></lucide-angular>
+                ></lucide-icon>
                 <p class="text-sm text-slate-500 dark:text-slate-400">No oracles registered yet</p>
               </div>
               <div
@@ -83,10 +83,10 @@ interface OracleEntry {
                   <div
                     class="w-8 h-8 rounded-lg bg-credit-gold/10 flex items-center justify-center"
                   >
-                    <lucide-angular
+                    <lucide-icon
                       [img]="HardDrive"
                       class="w-4 h-4 text-credit-gold"
-                    ></lucide-angular>
+                    ></lucide-icon>
                   </div>
                   <div>
                     <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
@@ -103,7 +103,7 @@ interface OracleEntry {
                     (click)="confirmRemove(oracle)"
                     class="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                   >
-                    <lucide-angular [img]="Trash2" class="w-4 h-4"></lucide-angular>
+                    <lucide-icon [img]="Trash2" class="w-4 h-4"></lucide-icon>
                   </button>
                 </div>
               </div>
@@ -127,7 +127,7 @@ interface OracleEntry {
                 [disabled]="!newOracleAddress.trim()"
                 class="btn btn-primary w-full flex items-center justify-center gap-2"
               >
-                <lucide-angular [img]="Plus" class="w-4 h-4"></lucide-angular>
+                <lucide-icon [img]="Plus" class="w-4 h-4"></lucide-icon>
                 Add Oracle
               </button>
             </div>

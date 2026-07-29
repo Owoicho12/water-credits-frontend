@@ -68,7 +68,7 @@ const SENSOR_THRESHOLDS: Record<string, { low?: number; high?: number }> = {
   template: `
     @if (updateAvailable()) {
       <div class="update-toast" role="status" aria-live="polite">
-        <lucide-angular [img]="RefreshCw" class="update-toast__icon"></lucide-angular>
+        <lucide-icon [img]="RefreshCw" class="update-toast__icon"></lucide-icon>
         <span class="update-toast__text">A new version is available.</span>
         <button type="button" class="update-toast__btn" (click)="reloadApp()">Reload</button>
       </div>
@@ -106,7 +106,7 @@ const SENSOR_THRESHOLDS: Record<string, { low?: number; high?: number }> = {
                 Total Projects
               </p>
               <div class="w-9 h-9 rounded-lg bg-stellar-blue/10 flex items-center justify-center">
-                <lucide-angular [img]="Leaf" class="w-4 h-4 text-stellar-blue"></lucide-angular>
+                <lucide-icon [img]="Leaf" class="w-4 h-4 text-stellar-blue"></lucide-icon>
               </div>
             </div>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -127,10 +127,10 @@ const SENSOR_THRESHOLDS: Record<string, { low?: number; high?: number }> = {
               <div
                 class="w-9 h-9 rounded-lg bg-environmental-green/10 flex items-center justify-center"
               >
-                <lucide-angular
+                <lucide-icon
                   [img]="Coins"
                   class="w-4 h-4 text-environmental-green"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -146,10 +146,10 @@ const SENSOR_THRESHOLDS: Record<string, { low?: number; high?: number }> = {
                 Credits Retired
               </p>
               <div class="w-9 h-9 rounded-lg bg-credit-gold/10 flex items-center justify-center">
-                <lucide-angular
+                <lucide-icon
                   [img]="TrendingUp"
                   class="w-4 h-4 text-credit-gold"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -168,10 +168,10 @@ const SENSOR_THRESHOLDS: Record<string, { low?: number; high?: number }> = {
                 Network
               </p>
               <div class="w-9 h-9 rounded-lg bg-retirement-red/10 flex items-center justify-center">
-                <lucide-angular
+                <lucide-icon
                   [img]="Activity"
                   class="w-4 h-4 text-retirement-red"
-                ></lucide-angular>
+                ></lucide-icon>
               </div>
             </div>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">
@@ -218,20 +218,20 @@ const SENSOR_THRESHOLDS: Record<string, { low?: number; high?: number }> = {
               *ngIf="(sensorAlerts$ | async)?.length === 0"
               class="text-center py-8 text-sm text-slate-400"
             >
-              <lucide-angular
+              <lucide-icon
                 [img]="AlertTriangle"
                 class="w-8 h-8 mx-auto mb-2 text-credit-gold"
-              ></lucide-angular>
+              ></lucide-icon>
               No active alerts
             </div>
             <div
               *ngFor="let alert of sensorAlerts$ | async"
               class="flex items-start gap-3 py-2 border-b border-slate-100 dark:border-slate-700 last:border-0"
             >
-              <lucide-angular
+              <lucide-icon
                 [img]="AlertTriangle"
                 class="w-4 h-4 text-credit-gold mt-0.5 shrink-0"
-              ></lucide-angular>
+              ></lucide-icon>
               <div>
                 <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
                   {{ alert.message }}
