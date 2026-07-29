@@ -73,13 +73,7 @@ const PURPOSE_OPTIONS = [
               class="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
             >
               <lucide-angular
-                *ngIf="i < currentStep"
-                [img]="Check"
-                class="w-5 h-5"
-              ></lucide-angular>
-              <lucide-angular
-                *ngIf="i >= currentStep"
-                [img]="step.icon"
+                [img]="i < currentStep ? Check : step.icon"
                 class="w-5 h-5"
               ></lucide-angular>
             </div>

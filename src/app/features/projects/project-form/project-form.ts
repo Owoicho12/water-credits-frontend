@@ -93,13 +93,7 @@ const ALLOWED_MIME = [
                 class="w-9 h-9 rounded-full flex items-center justify-center transition-colors shrink-0"
               >
                 <lucide-angular
-                  *ngIf="i < currentStep"
-                  [img]="CheckIcon"
-                  class="w-4 h-4"
-                ></lucide-angular>
-                <lucide-angular
-                  *ngIf="i >= currentStep"
-                  [img]="stepIcons[i]"
+                  [img]="i < currentStep ? CheckIcon : stepIcons[i]"
                   class="w-4 h-4"
                 ></lucide-angular>
               </div>
