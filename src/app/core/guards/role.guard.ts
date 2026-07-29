@@ -6,21 +6,8 @@ import { map, take } from 'rxjs/operators';
 import { selectCurrentUserRole } from '../store/auth/auth.selectors';
 import { UserRole } from '../models/user.model';
 import { AppState } from '../store/app.state';
+import { setRouteError } from '../store/ui/ui.actions';
 
-/**
- * Functional role guard for role-based access control.
- *
- * Usage in routes:
- *   canActivate: [AuthGuard, RoleGuard]
- *   data: { roles: ['admin'] }          // or ['farmer'], etc.
- *
- * Must be used after AuthGuard so that auth.user is guaranteed to be present
- * when RoleGuard runs.  If the user's role is not in data.roles, they are
- * redirected to /dashboard.
- *
- * The guard reads auth.user.role from the NgRx store — the single source of
- * truth for session state.
- */
 export const RoleGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
 ): Observable<boolean | UrlTree> => {
@@ -35,9 +22,10 @@ export const RoleGuard: CanActivateFn = (
       if (role && allowedRoles.includes(role)) {
         return true;
       }
-      // Redirect to dashboard rather than login — the user is authenticated
-      // but lacks the required role.
-      return router.parseUrl('/dashboard');
+      
+      // Dispatch 403 error instead of silently redirecting to dashboard
+      store.dispatch(setRouteError({ error: '403' }));
+      return false; // Cancel navigation so resolvers don't run
     }),
   );
 };

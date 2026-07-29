@@ -16,6 +16,7 @@ export interface UIState {
   isLoading: boolean;
   notifications: Notification[];
   unreadNotificationCount: number;
+  routeError: '404' | '500' | '403' | 'offline' | null;
 }
 
 export const initialState: UIState = {
@@ -24,6 +25,7 @@ export const initialState: UIState = {
   isLoading: false,
   notifications: [],
   unreadNotificationCount: 0,
+  routeError: null,
 };
 
 const MAX_NOTIFICATIONS = 50;
@@ -54,4 +56,6 @@ export const uiReducer = createReducer(
     unreadNotificationCount: 0,
     notifications: state.notifications.map((n) => ({ ...n, read: true })),
   })),
+  on(UIActions.setRouteError, (state, { error }) => ({ ...state, routeError: error })),
+  on(UIActions.clearRouteError, (state) => ({ ...state, routeError: null })),
 );

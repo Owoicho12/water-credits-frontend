@@ -11,3 +11,4 @@ export const selectUnreadNotificationCount = createSelector(
   selectUIState,
   (state) => state.unreadNotificationCount,
 );
+export const selectRouteError = createSelector(selectUIState, (state) => state.routeError);
