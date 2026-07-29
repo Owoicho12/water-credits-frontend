@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as MarketplaceActions from './marketplace.actions';
+import * as AuthActions from '../auth/auth.actions';
 import { MarketplaceListing, OrderBook } from '../../services/marketplace.service';
 
 /** The buy wizard's current phase, used to drive UI state. */
@@ -25,6 +26,8 @@ export interface MarketplaceState {
   buyPhase: BuyPhase;
   /** The listing currently being purchased through the buy wizard. */
   activeListing: MarketplaceListing | null;
+  /** Timestamp (ms) of the last successful listings fetch, for cache expiration checks. */
+  lastFetched: number | null;
   error: string | null;
 }
 
@@ -41,13 +44,13 @@ const initialState: MarketplaceState = {
   cancelling: false,
   buyPhase: 'idle',
   activeListing: null,
+  lastFetched: null,
   error: null,
 };
 
 export const marketplaceReducer = createReducer(
   initialState,
 
-  // ── Load Listings ───────────────────────────────────────────────────────────
   on(MarketplaceActions.loadListings, (state) => ({
     ...state,
     loading: true,
@@ -61,6 +64,7 @@ export const marketplaceReducer = createReducer(
     page: response.page,
     limit: response.limit,
     totalPages: response.totalPages,
+    lastFetched: Date.now(),
   })),
   on(MarketplaceActions.loadListingsFailure, (state, { error }) => ({
     ...state,
@@ -68,7 +72,6 @@ export const marketplaceReducer = createReducer(
     error,
   })),
 
-  // ── Load Order Book ─────────────────────────────────────────────────────────
   on(MarketplaceActions.loadOrderBook, (state) => ({
     ...state,
     loading: true,
@@ -86,7 +89,6 @@ export const marketplaceReducer = createReducer(
     error,
   })),
 
-  // ── Create Listing ──────────────────────────────────────────────────────────
   on(MarketplaceActions.createListing, (state) => ({
     ...state,
     creating: true,
@@ -104,7 +106,6 @@ export const marketplaceReducer = createReducer(
     error,
   })),
 
-  // ── Buy Listing ──────────────────────────────────────────────────────────────
   on(MarketplaceActions.initiateBuy, (state) => ({
     ...state,
     buyPhase: 'preparing' as BuyPhase,
@@ -117,7 +118,6 @@ export const marketplaceReducer = createReducer(
     error,
   })),
   on(MarketplaceActions.buySignatureRejected, (state) => ({
-    // User cancelled — return to idle so the buy page can go back to review.
     ...state,
     buyPhase: 'idle' as BuyPhase,
     error: null,
@@ -140,7 +140,6 @@ export const marketplaceReducer = createReducer(
     listings: state.listings.map((l) => (l.id === listing.id ? listing : l)),
   })),
 
-  // ── Cancel Listing ───────────────────────────────────────────────────────────
   on(MarketplaceActions.cancelListing, (state) => ({
     ...state,
     cancelling: true,
@@ -159,7 +158,6 @@ export const marketplaceReducer = createReducer(
     error,
   })),
 
-  // ── Filters / Pagination ────────────────────────────────────────────────────
   on(MarketplaceActions.setListingsFilters, (state, { status, projectId, search }) => ({
     ...state,
     filters: { status, projectId, search },
@@ -169,4 +167,6 @@ export const marketplaceReducer = createReducer(
     ...state,
     page,
   })),
+  // Full cache reset on forced logout, per the cache-invalidation strategy.
+  on(AuthActions.forceLogout, () => initialState),
 );
