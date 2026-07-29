@@ -12,13 +12,7 @@ import * as RetirementActions from './retirement/retirement.actions';
  * rather than an enum so it stays a plain string at the call site.
  */
 export type CacheSlice =
-  | 'analytics'
-  | 'projects'
-  | 'credits'
-  | 'retirement'
-  | 'marketplace'
-  | 'governance'
-  | 'farmers';
+  'analytics' | 'projects' | 'credits' | 'retirement' | 'marketplace' | 'governance' | 'farmers';
 
 /**
  * Maps a "success" action's `.type` string to the slices that must be

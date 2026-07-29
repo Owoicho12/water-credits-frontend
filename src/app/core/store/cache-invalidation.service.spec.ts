@@ -29,7 +29,11 @@ describe('CacheInvalidationService', () => {
   });
 
   it('maps castVoteSuccess to governance', () => {
-    const action = GovernanceActions.castVoteSuccess({ proposalId: 'p1', proposal: {} as any, vote: 'for' });
+    const action = GovernanceActions.castVoteSuccess({
+      proposalId: 'p1',
+      proposal: {} as any,
+      vote: 'for',
+    });
     expect(service.getDependentSlices(action)).toEqual(['governance']);
   });
 

@@ -32,10 +32,7 @@ describe('creditsReducer lastFetched / stale-while-revalidate', () => {
   it('updates lastFetched to a newer value once revalidation completes', async () => {
     const loaded = creditsReducer(undefined, CreditsActions.loadPortfolioSuccess({ portfolio }));
     await new Promise((resolve) => setTimeout(resolve, 5));
-    const revalidated = creditsReducer(
-      loaded,
-      CreditsActions.loadPortfolioSuccess({ portfolio }),
-    );
+    const revalidated = creditsReducer(loaded, CreditsActions.loadPortfolioSuccess({ portfolio }));
     expect(revalidated.lastFetched as number).toBeGreaterThan(loaded.lastFetched as number);
   });
 
