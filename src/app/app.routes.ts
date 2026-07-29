@@ -5,6 +5,7 @@ import { PendingChangesGuard } from './core/guards/pending-changes.guard';
 import { UserRole } from './core/models/user.model';
 import { DefaultLayoutComponent } from './shared/layouts/default-layout/default-layout';
 import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout';
+import { NotFoundPageComponent } from './features/errors/not-found-page/not-found-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -271,5 +272,5 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', component: NotFoundPageComponent },
 ];

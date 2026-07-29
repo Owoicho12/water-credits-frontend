@@ -16,3 +16,9 @@ export const addNotification = createAction(
 );
 export const removeNotification = createAction('[UI] Remove Notification', props<{ id: string }>());
 export const markNotificationsRead = createAction('[UI] Mark Notifications Read');
+
+export const setRouteError = createAction(
+  '[UI] Set Route Error',
+  props<{ error: '404' | '500' | '403' | 'offline' | null }>()
+);
+export const clearRouteError = createAction('[UI] Clear Route Error');
