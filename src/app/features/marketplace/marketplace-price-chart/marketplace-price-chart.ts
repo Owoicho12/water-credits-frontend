@@ -207,10 +207,10 @@ export class MarketplacePriceChartComponent implements OnInit, AfterViewInit, On
       .pipe(takeUntil(this.destroy$))
       .subscribe((candles) => {
         this.updateCandleChart(candles);
-        if (candles.length) {
-          this.lastCandle = candles[candles.length - 1];
-          const first = candles[0];
-          const change = this.lastCandle.close - first.open;
+        if (candles.length) {            const last = candles[candles.length - 1];
+            const first = candles[0];
+            this.lastCandle = last;
+            const change = last.close - first.open;
           this.priceChangePct = first.open !== 0 ? (change / first.open) * 100 : 0;
           this.priceDirection = change > 0 ? 'up' : change < 0 ? 'down' : 'flat';
         } else {
