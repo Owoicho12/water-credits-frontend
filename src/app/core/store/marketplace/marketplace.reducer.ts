@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as MarketplaceActions from './marketplace.actions';
+import * as AuthActions from '../auth/auth.actions';
 import { MarketplaceListing, OrderBook } from '../../services/marketplace.service';
 import { OhlcCandle, PriceChartTimeRange } from '../../models/marketplace.model';
 
@@ -26,6 +27,8 @@ export interface MarketplaceState {
   buyPhase: BuyPhase;
   /** The listing currently being purchased through the buy wizard. */
   activeListing: MarketplaceListing | null;
+  /** Timestamp (ms) of the last successful listings fetch, for cache expiration checks. */
+  lastFetched: number | null;
   error: string | null;
 
   // ── Price history ──────────────────────────────────────────────────────────
@@ -51,6 +54,7 @@ const initialState: MarketplaceState = {
   cancelling: false,
   buyPhase: 'idle',
   activeListing: null,
+  lastFetched: null,
   error: null,
 
   priceHistory: [],
@@ -62,7 +66,6 @@ const initialState: MarketplaceState = {
 export const marketplaceReducer = createReducer(
   initialState,
 
-  // ── Load Listings ───────────────────────────────────────────────────────────
   on(MarketplaceActions.loadListings, (state) => ({
     ...state,
     loading: true,
@@ -76,6 +79,7 @@ export const marketplaceReducer = createReducer(
     page: response.page,
     limit: response.limit,
     totalPages: response.totalPages,
+    lastFetched: Date.now(),
   })),
   on(MarketplaceActions.loadListingsFailure, (state, { error }) => ({
     ...state,
@@ -83,7 +87,6 @@ export const marketplaceReducer = createReducer(
     error,
   })),
 
-  // ── Load Order Book ─────────────────────────────────────────────────────────
   on(MarketplaceActions.loadOrderBook, (state) => ({
     ...state,
     loading: true,
@@ -106,7 +109,6 @@ export const marketplaceReducer = createReducer(
     orderBook,
   })),
 
-  // ── Create Listing ──────────────────────────────────────────────────────────
   on(MarketplaceActions.createListing, (state) => ({
     ...state,
     creating: true,
@@ -124,7 +126,6 @@ export const marketplaceReducer = createReducer(
     error,
   })),
 
-  // ── Buy Listing ──────────────────────────────────────────────────────────────
   on(MarketplaceActions.initiateBuy, (state) => ({
     ...state,
     buyPhase: 'preparing' as BuyPhase,
@@ -137,7 +138,6 @@ export const marketplaceReducer = createReducer(
     error,
   })),
   on(MarketplaceActions.buySignatureRejected, (state) => ({
-    // User cancelled — return to idle so the buy page can go back to review.
     ...state,
     buyPhase: 'idle' as BuyPhase,
     error: null,
@@ -160,7 +160,6 @@ export const marketplaceReducer = createReducer(
     listings: state.listings.map((l) => (l.id === listing.id ? listing : l)),
   })),
 
-  // ── Cancel Listing ───────────────────────────────────────────────────────────
   on(MarketplaceActions.cancelListing, (state) => ({
     ...state,
     cancelling: true,
@@ -179,7 +178,6 @@ export const marketplaceReducer = createReducer(
     error,
   })),
 
-  // ── Filters / Pagination ────────────────────────────────────────────────────
   on(MarketplaceActions.setListingsFilters, (state, { status, projectId, search }) => ({
     ...state,
     filters: { status, projectId, search },
@@ -189,39 +187,6 @@ export const marketplaceReducer = createReducer(
     ...state,
     page,
   })),
-
-  // ── Price History ───────────────────────────────────────────────────────────
-  on(MarketplaceActions.loadPriceHistory, (state) => ({
-    ...state,
-    priceHistoryLoading: true,
-    priceHistoryError: null,
-  })),
-  on(MarketplaceActions.loadPriceHistorySuccess, (state, { candles }) => ({
-    ...state,
-    priceHistoryLoading: false,
-    priceHistory: candles,
-  })),
-  on(MarketplaceActions.loadPriceHistoryFailure, (state, { error }) => ({
-    ...state,
-    priceHistoryLoading: false,
-    priceHistoryError: error,
-  })),
-  /**
-   * Upserts a single candle that arrived via WebSocket.
-   * If a candle with the same `time` already exists it is replaced (live
-   * candle update); otherwise the new candle is appended.
-   */
-  on(MarketplaceActions.updateCandleRealtime, (state, { candle }) => {
-    const existing = state.priceHistory.findIndex((c) => c.time === candle.time);
-    const priceHistory =
-      existing >= 0
-        ? state.priceHistory.map((c, i) => (i === existing ? candle : c))
-        : [...state.priceHistory, candle];
-    return { ...state, priceHistory };
-  }),
-  on(MarketplaceActions.setPriceChartRange, (state, { range }) => ({
-    ...state,
-    priceChartRange: range,
-    priceHistory: [],
-  })),
+  // Full cache reset on forced logout, per the cache-invalidation strategy.
+  on(AuthActions.forceLogout, () => initialState),
 );
